@@ -1,0 +1,25 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --follow-symlinks --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.reactapp21oct2021 }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AKIA2ZIRZBLMCFMHFH56 }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.oBpDmmcJSoJOhu/O74lnLGHoGVQr19bapt1KgqcS }}
+        AWS_REGION: 'ap-south-1'   # optional: ap-south-1
+        SOURCE_DIR: 'public'      # optional: defaults to entire repository
+      - name: Build React App
+        run: npm install && npm run build
+      - name: Deploy app build to S3 bucket
+        run: aws s3 sync ./dist/ s3://reactapp21oct2021 --delete
