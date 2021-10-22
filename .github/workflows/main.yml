@@ -14,8 +14,8 @@ jobs:
       with:
         args: --acl public-read --follow-symlinks --delete
       env:
-        AWS_S3_BUCKET: ${{ secrets.reactapp21oct2021 }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AKIA2ZIRZBLMCFMHFH56 }}
+        AWS_S3_BUCKET: ${{ secrets. }}
+        AWS_ACCESS_KEY_ID: ${{ secrets. }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.oBpDmmcJSoJOhu/O74lnLGHoGVQr19bapt1KgqcS }}
         AWS_REGION: 'ap-south-1'   # optional: ap-south-1
         SOURCE_DIR: 'public'      # optional: defaults to entire repository
